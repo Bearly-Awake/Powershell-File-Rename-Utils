@@ -1,4 +1,3 @@
-#
 #This is a template for future functions
 #function rename-Item____($path){
 #    $files = Get-ChildItem $path | select *
@@ -27,6 +26,15 @@ function rename-ItemRemovePeriodReplaceWithSpace($path){
     cd $path
         foreach ($file in $files){
             Rename-Item  -LiteralPath $file.FullName -NewName $($file.name -replace "\.(?=.*\.)"," ")
+        } 
+    $files = Get-ChildItem $path | select *
+        foreach ($file in $files){
+            if($file.name -like " *"){
+                Rename-Item  -LiteralPath $file.FullName -NewName $($file.name -replace " *","")
         }
-    cd $currentpath  = Get-Location
+    cd $currentpath
+    }
 }
+
+
+
