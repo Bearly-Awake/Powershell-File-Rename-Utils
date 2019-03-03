@@ -6,10 +6,10 @@ cd $path
         }
 }
 
-function rename-ItemRemovePeriodReplacewithSpace($path){
+function rename-ItemRemovePeriodReplaceWithSpace($path){
 $files = Get-ChildItem $path | select *
 cd $path
     foreach ($file in $files){
-        Rename-Item  -LiteralPath $file.FullName -NewName $($file.name -replace "\."," ")
+        Rename-Item  -LiteralPath $file.FullName -NewName $($file.name -replace "\.(?=.*\.)"," ")
     }
 }
